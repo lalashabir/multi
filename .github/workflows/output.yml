@@ -1,15 +1,11 @@
-name: pass-data
-on: [push]
-
+name: set color 
+on: push
 jobs:
-  example:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set a variable
-        id: step1  # Step ID to reference later
-        run: echo "MY_VAR=Hello World" >> $GITHUB_ENV  # Sets an environment variable
-
-      - name: Use the variable
-        run: echo "The message is: $MY_VAR"
-        env:
-          MY_VAR: ${{ env.MY_VAR }}  # Ensure the variable is accessible
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: set color
+            id: demo
+            run: echo"color=green">> $GITHUB_OUTPUT
+            - name: get color
+            run: echo " the selected color is ${{steps.demo.outputs.color}}"
