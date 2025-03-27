@@ -11,3 +11,5 @@ jobs:
 
       - name: Use the variable
         run: echo "The message is: $MY_VAR"
+        env:
+          MY_VAR: ${{ env.MY_VAR }}  # Ensure the variable is accessible
