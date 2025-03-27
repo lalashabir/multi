@@ -1,12 +1,13 @@
 name: event-trigger
 on:
-    pul_request:
-        types:
-            - opened 
-            workflow_dispatch:
-                jobs:
-                    activity:
-                        runs-on: ubuntu-latest
-                        steps:
-                            -n name: print data
-                            run: echo " working"
+  pull_request:
+    types:
+      - opened
+  workflow_dispatch:  # Fix: Properly aligned outside of pull_request
+
+jobs:
+  activity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print data  # Fix: Correct key format
+        run: echo "Working"
