@@ -1,11 +1,13 @@
-name: set color 
+name: set color
 on: push
+
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - name: set color
-            id: demo
-            run: echo"color=green">> $GITHUB_OUTPUT
-            - name: get color
-            run: echo " the selected color is ${{steps.demo.outputs.color}}"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set color
+        id: demo
+        run: echo "color=green" >> $GITHUB_OUTPUT  # Fix: Corrected spacing and syntax
+
+      - name: Get color
+        run: echo "The selected color is ${{ steps.demo.outputs.color }}"
