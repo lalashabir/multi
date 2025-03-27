@@ -9,8 +9,15 @@ jobs:
         run: echo "Print first job"
 
   second-job:
-    needs: first-job  # Fix: Specify dependency
+    needs: first-job  # Specifies dependency
     runs-on: ubuntu-latest
     steps:
       - name: Print second job
         run: echo "Print second job"
+
+  third-job:
+    needs: second-job  # Specifies dependency
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print GitHub Context
+        run: echo "${{ toJson(github) }}"
