@@ -1,0 +1,13 @@
+name: pass-data
+on: [push]
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set a variable
+        id: step1  # Step ID to reference later
+        run: echo "MY_VAR=Hello World" >> $GITHUB_ENV  # Sets an environment variable
+
+      - name: Use the variable
+        run: echo "The message is: $MY_VAR"
