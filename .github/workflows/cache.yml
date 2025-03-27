@@ -10,7 +10,7 @@ jobs:
 
       - name: build
         run: |
-          npm ci
+          npm install
           npm run build
 
   # job2:
