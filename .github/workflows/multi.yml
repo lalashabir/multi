@@ -1,14 +1,16 @@
 name: multi job
-on: [push,workflow_dispatch]
+on: [push, workflow_dispatch]
+
 jobs:
-    first-job:
-        runs-on: ubuntu-latest
-        steps:
-            - name: print first job 
-            run: echo "print first job"
-    second-job:
-        needs:
-            runs-on: ubuntu-latest
-            steps:
-                - name: print second job 
-                run: echo "print second job"
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print first job
+        run: echo "Print first job"
+
+  second-job:
+    needs: first-job  # Fix: Specify dependency
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print second job
+        run: echo "Print second job"
