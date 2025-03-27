@@ -1,15 +1,16 @@
 name: filtering
 on:
-    push:
-        branches:
-            - main
-            - 'master-*'
-            - 'vite/**'
-            paths:
-                - '.github/workflows/*'
-                jobs:
-                    filter:
-                        runs-on: ubuntu-latest
-                        steps:
-                            - name: github context  
-                            run: echo "${{toJson(github.event)}}"
+  push:
+    branches:
+      - main
+      - "master-*"  # Matches branches starting with "master-"
+      - "vite/**"    # Matches all branches under "vite/"
+    paths:
+      - ".github/workflows/*"  # Triggers only if files in this path change
+
+jobs:
+  filter:  # Fix: Corrected indentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Context
+        run: echo "${{ toJson(github.event) }}"  # Fixed function syntax
